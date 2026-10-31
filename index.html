@@ -1,0 +1,446 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Ashwini Devalkar Developer Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: single-page portfolio with a sticky section menu, light lavender-white look,
+   hero with framed photo and floating status cards, then About, Skills, Projects, Experience,
+   Education, Certifications and Contact. One violet accent, one warm coral spark for status. */
+:root {
+  --bg: #ffffff;
+  --tint: #f5f1ff;
+  --tint-2: #ebe4ff;
+  --ink: #17132b;
+  --muted: #5a5472;
+  --line: rgba(23, 19, 43, .12);
+  --violet: #6a45f0;
+  --violet-d: #4f2fd0;
+  --coral: #ff7a59;
+  --green: #12a37f;
+  --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16.5px/1.7 var(--body); overflow-x: clip; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; }
+:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+/* ---------- menu ---------- */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: rgba(255, 255, 255, .92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; flex-wrap: wrap; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font: 700 18px/1 var(--display); text-decoration: none; letter-spacing: -.01em; }
+.brand b { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 9px; background: var(--violet); color: #fff; font-size: 14px; }
+.menu { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; max-width: 100%; }
+.menu::-webkit-scrollbar { display: none; }
+.menu a { flex: none; padding: 8px 12px; font: 500 14px/1 var(--body); color: var(--muted); text-decoration: none; border-radius: 8px; transition: color .2s, background .2s; }
+.menu a:hover { color: var(--ink); background: var(--tint); }
+.menu a.on { color: var(--violet-d); background: var(--tint-2); }
+
+/* ---------- shared ---------- */
+.sec { padding-block: clamp(64px, 9vw, 112px); }
+.sec.alt { background: var(--tint); }
+.pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 99px; background: var(--tint-2); color: var(--violet-d); font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.sec-head { display: grid; gap: 14px; justify-items: start; margin-bottom: clamp(32px, 5vw, 56px); }
+.sec-head h2 { font-size: clamp(2rem, 4.6vw, 3.4rem); }
+.sec-head p { color: var(--muted); max-width: 56ch; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 22px; border-radius: 10px; border: 1px solid var(--violet); background: var(--violet); color: #fff; font: 600 15px/1 var(--body); text-decoration: none; cursor: pointer; transition: transform .2s, background .2s, box-shadow .2s; }
+.btn:hover { background: var(--violet-d); transform: translateY(-2px); box-shadow: 0 10px 24px -12px rgba(106, 69, 240, .7); }
+.btn.ghost { background: #fff; color: var(--ink); border-color: var(--line); }
+.btn.ghost:hover { border-color: var(--violet); color: var(--violet-d); box-shadow: none; }
+.btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+.tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.tags li { padding: 6px 11px; border-radius: 99px; background: var(--tint); color: var(--violet-d); font: 500 12.5px/1 var(--mono); }
+.alt .tags li { background: #fff; }
+
+/* ---------- hero ---------- */
+.hero { position: relative; overflow: hidden; padding: clamp(48px, 8vw, 96px) 0 clamp(64px, 9vw, 112px);
+  background: radial-gradient(700px circle at 85% 20%, rgba(106, 69, 240, .16), transparent 65%), radial-gradient(600px circle at 0% 100%, rgba(255, 122, 89, .10), transparent 60%), var(--bg); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.hero h1 { font-size: clamp(2.8rem, 7.4vw, 5.6rem); margin: 22px 0 18px; }
+.hero h1 em { font-style: normal; color: var(--violet); }
+.role { font: 500 clamp(1rem, 2vw, 1.35rem)/1.4 var(--mono); color: var(--ink); min-height: 1.6em; }
+.role .caret { display: inline-block; width: 2px; height: 1.1em; background: var(--violet); margin-left: 3px; vertical-align: -.15em; animation: caret 1s steps(2, jump-none) infinite; }
+@keyframes caret { 50% { opacity: 0; } }
+.hero .lede { margin-top: 18px; color: var(--muted); max-width: 52ch; font-size: 1.08rem; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hero .tags { margin-top: 30px; }
+.photo { position: relative; max-width: 420px; justify-self: center; width: 100%; }
+.photo .img { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 24px; background: var(--tint-2); box-shadow: 0 30px 60px -30px rgba(79, 47, 208, .5); }
+.photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 14%; }
+.float { position: absolute; display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 16px 32px -18px rgba(23, 19, 43, .4); font: 500 12.5px/1.35 var(--body); max-width: 230px; }
+.float small { display: block; color: var(--muted); font: 400 10.5px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.float i { flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(18, 163, 127, .18); }
+.float.a { left: -28px; bottom: 36px; }
+.float.b { right: -20px; top: 28px; }
+.float.b i { background: var(--coral); box-shadow: 0 0 0 4px rgba(255, 122, 89, .2); }
+
+/* ---------- about ---------- */
+.about-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
+.purpose { padding: clamp(22px, 3vw, 34px); background: #fff; border: 1px solid var(--line); border-radius: 16px; display: grid; gap: 16px; }
+.purpose p { color: var(--muted); }
+.facts { display: grid; gap: 0; margin: 0; }
+.facts div { display: grid; grid-template-columns: minmax(96px, 36%) minmax(0, 1fr); gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); }
+.facts dt { font: 500 12px/1.6 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.facts dd { margin: 0; font-weight: 500; }
+
+/* ---------- skills ---------- */
+.skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.skill { padding: 24px; background: var(--bg); border: 1px solid var(--line); border-radius: 14px; display: grid; gap: 14px; align-content: start; }
+.skill h3 { font-size: 1.25rem; }
+.skill .tags li { background: var(--tint); }
+
+/* ---------- projects ---------- */
+.projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.proj { padding: clamp(22px, 2.6vw, 30px); border: 1px solid var(--line); border-radius: 16px; background: #fff; display: grid; gap: 14px; align-content: start; min-width: 0; transition: transform .25s, box-shadow .25s, border-color .25s; }
+.proj:hover { transform: translateY(-4px); border-color: rgba(106, 69, 240, .4); box-shadow: 0 24px 40px -28px rgba(79, 47, 208, .5); }
+.proj.feature { grid-column: 1 / -1; background: linear-gradient(135deg, var(--tint), #fff 70%); border-color: rgba(106, 69, 240, .28); }
+.proj .kind { font: 500 11.5px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.proj h3 { font-size: clamp(1.3rem, 2.2vw, 1.65rem); }
+.proj.feature h3 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); max-width: 26ch; }
+.proj p { color: var(--muted); }
+.now { display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 163, 127, .12); color: #0b7a5e; font: 500 11.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.now i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .3; transform: scale(.8); } }
+.flow { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font: 400 12.5px/1 var(--mono); }
+.flow li { padding: 8px 11px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.flow li + li::before { content: "→"; color: var(--violet); margin-right: 8px; }
+
+/* ---------- experience / education ---------- */
+.timeline { position: relative; display: grid; gap: 32px; padding-left: 32px; margin: 0; list-style: none; }
+.timeline::before { content: ""; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--violet), var(--tint-2)); }
+.timeline li { position: relative; display: grid; gap: 8px; }
+.timeline li::before { content: ""; position: absolute; left: -32px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--violet); }
+.timeline .when { font: 500 12px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--violet-d); }
+.timeline h3 { font-size: clamp(1.25rem, 2.2vw, 1.6rem); }
+.timeline p { color: var(--muted); max-width: 64ch; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 5vw, 72px); }
+.two > div > h3.sub { font-size: 1.1rem; font-family: var(--mono); font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+
+/* ---------- certifications ---------- */
+.certs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.cert { margin: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #fff; display: grid; }
+.cert img { width: 100%; height: auto; }
+.cert figcaption { padding: 20px 22px 22px; display: grid; gap: 6px; }
+.cert h3 { font-size: 1.25rem; }
+.cert p { color: var(--muted); font: 400 13px/1.5 var(--mono); }
+.cert a { justify-self: start; margin-top: 8px; color: var(--violet-d); font-weight: 600; font-size: 14px; text-decoration: none; border-bottom: 2px solid var(--tint-2); }
+.cert a:hover { border-color: var(--violet); }
+
+/* ---------- contact ---------- */
+.contact { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
+.reach { margin: 0; }
+.reach > div { display: grid; grid-template-columns: minmax(88px, 30%) minmax(0, 1fr); gap: 12px; padding: 16px 0; border-top: 1px solid var(--line); align-items: center; }
+.reach > div:last-child { border-bottom: 1px solid var(--line); }
+.reach dt { font: 500 12px/1.6 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.reach dd { margin: 0; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; min-width: 0; font-weight: 500; overflow-wrap: anywhere; }
+.reach a { text-decoration: none; color: var(--violet-d); }
+.reach a:hover { text-decoration: underline; }
+.mini { font: 500 12px/1 var(--mono); padding: 7px 10px; border-radius: 7px; background: #fff; border: 1px solid var(--line); cursor: pointer; color: var(--ink); }
+.mini:hover { border-color: var(--violet); color: var(--violet-d); }
+.dm { display: grid; gap: 16px; padding: clamp(20px, 3vw, 32px); background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 24px 50px -36px rgba(79, 47, 208, .55); }
+.dm h3 { font-size: 1.6rem; }
+.field { display: grid; gap: 6px; }
+.field label { font: 500 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.field input, .field textarea { width: 100%; font: 400 16px/1.5 var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 12px 14px; resize: vertical; }
+.field input:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--violet); outline-offset: 1px; border-color: var(--violet); }
+.dm-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.dm-note { font: 400 12.5px/1.6 var(--mono); color: var(--muted); }
+.foot { padding: 28px 0 36px; border-top: 1px solid var(--line); color: var(--muted); font: 400 13px/1.6 var(--mono); }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+/* ---------- motion ---------- */
+.js .pre { opacity: .55; transform: translateY(16px); }
+.js .pre.in { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s ease; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .hero-grid, .about-grid, .contact, .two { grid-template-columns: minmax(0, 1fr); }
+  .skills, .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .photo { max-width: 360px; justify-self: start; }
+  .float.a { left: 12px; }
+  .float.b { right: 12px; }
+}
+@media (max-width: 620px) {
+  .skills, .projects, .certs { grid-template-columns: minmax(0, 1fr); }
+  .top .wrap { padding-top: 10px; padding-bottom: 8px; }
+  .menu { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .pre { opacity: 1; transform: none; }
+  .now i, .role .caret { animation: none; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="Ashwini Devalkar, back to top"><b>AD</b>Ashwini Devalkar</a>
+    <nav class="menu" aria-label="Sections">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home" data-sec>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill">B.Tech CSE · Class of 2027</span>
+        <h1>Hello, I'm <em>Ashwini</em> Devalkar.</h1>
+        <p class="role" aria-label="Web application developer"><span id="typed">Web application developer</span><span class="caret" aria-hidden="true"></span></p>
+        <p class="lede">A Computer Science and Engineering student who builds database-backed web applications with Java, Python and MySQL, and is learning Spring Boot while building a tourism recommendation system as her major project.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#contact">Get in touch</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/ashwini-devalkar-001632424" target="_blank" rel="noopener">View LinkedIn ↗</a>
+        </div>
+        <ul class="tags"><li>Java</li><li>Python</li><li>MySQL</li><li>Spring Boot</li><li>AWS Academy</li></ul>
+      </div>
+      <figure class="photo" style="margin:0">
+        <div class="img"><img src="assets/portrait.jpg" alt="Ashwini Devalkar in a black blazer, smiling outdoors" width="720" height="1280"></div>
+        <div class="float a"><i></i><span><small>Currently building</small>Tourism Recommendation System</span></div>
+        <div class="float b"><i></i><span><small>Certified</small>2 AWS Academy badges</span></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec alt" id="about" data-sec>
+    <div class="wrap">
+      <div class="sec-head pre"><span class="pill">About me</span><h2>Background and direction</h2></div>
+      <div class="about-grid">
+        <div class="pre" style="display:grid;gap:18px">
+          <p>I am a final-year B.Tech student in Computer Science and Engineering at Shree Siddheshwar Women's College of Engineering, Solapur. My work so far is about web applications that keep real records safe: a secure login at the front, and a MySQL database behind it.</p>
+          <p>I started with Python and MySQL projects for student registration and case records. I am now building with Spring Boot, Bootstrap and MySQL, and I have completed two AWS Academy courses to understand how these systems run in the cloud.</p>
+        </div>
+        <div class="purpose pre">
+          <span class="pill" style="justify-self:start">Statement of purpose</span>
+          <p>To turn ideas into working software, keep learning new technologies, and grow into a dependable full-stack developer.</p>
+          <dl class="facts">
+            <div><dt>Degree</dt><dd>B.Tech, Computer Science and Engineering</dd></div>
+            <div><dt>Batch</dt><dd>2023 – 2027</dd></div>
+            <div><dt>CGPA</dt><dd>7.9</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="skills" data-sec>
+    <div class="wrap">
+      <div class="sec-head pre"><span class="pill">Technical competencies</span><h2>Skills &amp; technologies</h2><p>The languages, tools and concepts I use to build and understand software.</p></div>
+      <div class="skills">
+        <article class="skill pre"><h3>Programming</h3><ul class="tags"><li>C</li><li>Java</li><li>Python</li></ul></article>
+        <article class="skill pre"><h3>Web</h3><ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Bootstrap</li></ul></article>
+        <article class="skill pre"><h3>Backend</h3><ul class="tags"><li>Spring Boot</li><li>Python web apps</li></ul></article>
+        <article class="skill pre"><h3>Database</h3><ul class="tags"><li>MySQL</li><li>DBMS</li></ul></article>
+        <article class="skill pre"><h3>Core concepts</h3><ul class="tags"><li>Data Structures &amp; Algorithms</li><li>OOP</li><li>Operating Systems</li></ul></article>
+        <article class="skill pre"><h3>Tools &amp; cloud</h3><ul class="tags"><li>VS Code</li><li>Jupyter Notebook</li><li>Eclipse IDE</li><li>AWS Academy</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="projects" data-sec>
+    <div class="wrap">
+      <div class="sec-head pre"><span class="pill">Featured projects</span><h2>Things I have built</h2><p>Web applications that manage records, users and logins.</p></div>
+      <div class="projects">
+        <article class="proj feature pre">
+          <p class="kind">Final-year major project <span class="now"><i></i>Currently working on</span></p>
+          <h3>Tourism Recommendation System with Personalized Itinerary Generation</h3>
+          <p>I am building this right now. It recommends places to visit and assembles a personalised itinerary for each traveller.</p>
+          <ol class="flow"><li>Traveller preferences</li><li>Recommendations</li><li>Itinerary</li></ol>
+          <ul class="tags"><li>Spring Boot</li><li>MySQL</li><li>Bootstrap</li></ul>
+        </article>
+        <article class="proj pre">
+          <p class="kind">Web application</p>
+          <h3>Student Registration System</h3>
+          <p>Manages student registration and course enrollment, with secure login authentication and student record management.</p>
+          <ol class="flow"><li>Login</li><li>Records</li><li>Enrollment</li></ol>
+          <ul class="tags"><li>Python</li><li>MySQL</li><li>HTML</li><li>CSS</li></ul>
+        </article>
+        <article class="proj pre">
+          <p class="kind">Web application</p>
+          <h3>Criminal Investigation System</h3>
+          <p>Manages criminal records, case details and investigation reports, with secure login and database integration.</p>
+          <ol class="flow"><li>Login</li><li>Cases</li><li>Reports</li></ol>
+          <ul class="tags"><li>Python</li><li>MySQL</li><li>HTML</li><li>CSS</li></ul>
+        </article>
+        <article class="proj pre">
+          <p class="kind">Virtual internship tasks</p>
+          <h3>Library Management &amp; Student Management Portal</h3>
+          <p>Two full-stack web applications with a Bootstrap front end, a Spring Boot back end and a MySQL database.</p>
+          <ol class="flow"><li>Bootstrap</li><li>Spring Boot</li><li>MySQL</li></ol>
+          <ul class="tags"><li>Spring Boot</li><li>MySQL</li><li>Bootstrap</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="experience" data-sec>
+    <div class="wrap">
+      <div class="sec-head pre"><span class="pill">Practical experience</span><h2>Experience</h2><p>Hands-on work beyond the classroom.</p></div>
+      <ol class="timeline">
+        <li class="pre"><span class="when">Virtual internship</span><h3>Spring Boot web application tasks</h3><p>Built the Library Management System and the Student Management Portal as full-stack applications using Spring Boot, MySQL and Bootstrap.</p></li>
+        <li class="pre"><span class="when">Volunteering</span><h3>Student volunteer, NXTWAVE Generative AI Workshop</h3><p>Coordinated and supported a hands-on workshop on Generative AI, helping participants understand core concepts and tools.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec alt" id="education" data-sec>
+    <div class="wrap">
+      <div class="sec-head pre"><span class="pill">Academic background</span><h2>Education</h2></div>
+      <ol class="timeline">
+        <li class="pre"><span class="when">2023 – 2027</span><h3>B.Tech in Computer Science and Engineering</h3><p>Shree Siddheshwar Women's College of Engineering, Solapur. CGPA 7.9.</p></li>
+        <li class="pre"><span class="when">2023</span><h3>Higher Secondary Certificate (HSC)</h3><p>Shri Venkatesh Higher Education College, Ghatangri.</p></li>
+        <li class="pre"><span class="when">2021</span><h3>Secondary School Certificate (SSC)</h3><p>Abhinav English School, Dharashiv.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="certifications" data-sec>
+    <div class="wrap">
+      <div class="sec-head pre"><span class="pill">Credentials</span><h2>Certifications</h2><p>AWS Academy training badges, verifiable on Credly.</p></div>
+      <div class="certs">
+        <figure class="cert pre">
+          <img src="assets/aws-foundations.jpg" alt="AWS Academy Graduate Cloud Foundations training badge for Ashwini Devalkar" width="1210" height="935">
+          <figcaption><h3>AWS Academy Graduate: Cloud Foundations</h3><p>20 hours · issued 31 Jul 2026</p><a href="https://www.credly.com/go/nKN5LI0C" target="_blank" rel="noopener">Verify on Credly ↗</a></figcaption>
+        </figure>
+        <figure class="cert pre">
+          <img src="assets/aws-architecting.jpg" alt="AWS Academy Graduate Cloud Architecting training badge for Ashwini Devalkar" width="1210" height="935">
+          <figcaption><h3>AWS Academy Graduate: Cloud Architecting</h3><p>60 hours · issued 11 Aug 2026</p><a href="https://www.credly.com/go/BfgSOEc1" target="_blank" rel="noopener">Verify on Credly ↗</a></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="contact" data-sec>
+    <div class="wrap">
+      <div class="sec-head pre"><span class="pill">Let's connect</span><h2>Get in touch</h2><p>For internships, projects or feedback, write to me here or use the details below.</p></div>
+      <div class="contact">
+        <dl class="reach pre">
+          <div><dt>Email</dt><dd><span id="mail">ashwinidevalkar17@gmail.com</span><button class="mini" id="copyMail" type="button">Copy</button></dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/ashwini-devalkar-001632424" target="_blank" rel="noopener">Ashwini Devalkar ↗</a></dd></div>
+          <div><dt>Graduating</dt><dd>B.Tech CSE · 2023 – 2027</dd></div>
+        </dl>
+        <form class="dm pre" id="dm" novalidate>
+          <h3>Send me a message</h3>
+          <div class="field"><label for="dmName">Your name</label><input id="dmName" type="text" autocomplete="name" maxlength="80"></div>
+          <div class="field"><label for="dmFrom">Email or phone, so I can reply</label><input id="dmFrom" type="text" autocomplete="off" maxlength="120"></div>
+          <div class="field"><label for="dmMsg">Message</label><textarea id="dmMsg" rows="5" maxlength="1000" placeholder="Hi Ashwini, I saw your portfolio and..."></textarea></div>
+          <div class="dm-actions">
+            <a class="btn" id="dmMail" href="#">Send by email</a>
+            <button class="btn ghost" id="dmCopy" type="button">Copy message</button>
+          </div>
+          <p class="dm-note" id="dmNote" aria-live="polite">Your message opens in your email app with the text filled in. Nothing is sent until you press send there.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><span>© 2026 Ashwini Devalkar</span><span>B.Tech CSE · 2023 – 2027 · Solapur</span></div></footer>
+
+<script>
+(function () {
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+
+  /* ---- menu highlight follows the section in view ---- */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.menu a'));
+  var secs = Array.prototype.slice.call(document.querySelectorAll('[data-sec]'));
+  var ticking = false;
+  function spy() {
+    ticking = false;
+    var line = window.innerHeight * 0.35, cur = secs[0].id;
+    secs.forEach(function (s) { if (s.getBoundingClientRect().top <= line) cur = s.id; });
+    links.forEach(function (a) {
+      var on = a.getAttribute('href') === '#' + cur;
+      a.classList.toggle('on', on);
+      if (on && a.scrollIntoView && a.offsetParent) {
+        var m = a.parentElement;
+        if (m.scrollWidth > m.clientWidth) m.scrollTo({ left: a.offsetLeft - 24, behavior: 'auto' });
+      }
+    });
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+  spy();
+
+  /* ---- typing line ---- */
+  var typed = document.getElementById('typed');
+  var roles = ['Web application developer', 'Java and Spring Boot learner', 'Python and MySQL builder', 'AWS Academy certified'];
+  if (!reduce) {
+    var r = 0, c = roles[0].length, del = true;
+    var tick = function () {
+      var word = roles[r];
+      if (del) { c--; } else { c++; }
+      typed.textContent = word.slice(0, c);
+      var wait = 55;
+      if (!del && c === word.length) { del = true; wait = 1700; }
+      else if (del && c === 0) { del = false; r = (r + 1) % roles.length; wait = 350; }
+      else if (del) { wait = 28; }
+      setTimeout(tick, wait);
+    };
+    setTimeout(tick, 3000);
+  }
+
+  /* ---- reveal on scroll (content stays visible if this never runs) ---- */
+  if (!reduce && 'IntersectionObserver' in window) {
+    var items = Array.prototype.slice.call(document.querySelectorAll('.pre'));
+    var vh = window.innerHeight;
+    items = items.filter(function (el) { return el.getBoundingClientRect().top > vh * 0.92; });
+    document.documentElement.classList.add('js');
+    document.querySelectorAll('.pre').forEach(function (el) { if (items.indexOf(el) < 0) el.classList.add('in'); });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---- copy email ---- */
+  var copyBtn = document.getElementById('copyMail');
+  var mail = document.getElementById('mail');
+  copyBtn.addEventListener('click', function () {
+    var done = function () { copyBtn.textContent = 'Copied'; setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1800); };
+    var fb = function () { var rg = document.createRange(); rg.selectNodeContents(mail); var s = window.getSelection(); s.removeAllRanges(); s.addRange(rg); copyBtn.textContent = 'Press Ctrl+C'; };
+    try { navigator.clipboard.writeText(mail.textContent.trim()).then(done, fb); } catch (e) { fb(); }
+  });
+
+  /* ---- message box: opens the email app with the text filled in ---- */
+  var dm = document.getElementById('dm');
+  var fName = document.getElementById('dmName'), fFrom = document.getElementById('dmFrom'), fMsg = document.getElementById('dmMsg');
+  var aMail = document.getElementById('dmMail'), bCopy = document.getElementById('dmCopy'), note = document.getElementById('dmNote');
+  var noteDefault = note.textContent;
+  function compose() {
+    var name = fName.value.trim(), from = fFrom.value.trim(), msg = fMsg.value.trim();
+    return { text: 'Hi Ashwini, ' + (name ? 'this is ' + name + '. ' : '') + msg + (from ? '\n\nReply to: ' + from : ''), ready: msg.length > 0, name: name };
+  }
+  function refresh() {
+    var c = compose();
+    aMail.href = 'mailto:ashwinidevalkar17@gmail.com?subject=' + encodeURIComponent('Portfolio message' + (c.name ? ' from ' + c.name : '')) + '&body=' + encodeURIComponent(c.text);
+    aMail.setAttribute('aria-disabled', c.ready ? 'false' : 'true');
+  }
+  [fName, fFrom, fMsg].forEach(function (el) { el.addEventListener('input', function () { refresh(); note.textContent = noteDefault; }); });
+  aMail.addEventListener('click', function (e) {
+    if (!compose().ready) { e.preventDefault(); note.textContent = 'Write a message first.'; fMsg.focus(); }
+    else { note.textContent = 'If nothing opened, use Copy message and paste it into an email.'; }
+  });
+  dm.addEventListener('submit', function (e) { e.preventDefault(); });
+  bCopy.addEventListener('click', function () {
+    var c = compose();
+    if (!c.ready) { note.textContent = 'Write a message first.'; fMsg.focus(); return; }
+    var ok = function () { note.textContent = 'Copied. Paste it into an email to ashwinidevalkar17@gmail.com.'; };
+    var no = function () { fMsg.select(); note.textContent = 'Press Ctrl+C to copy the message.'; };
+    try { navigator.clipboard.writeText(c.text).then(ok, no); } catch (e2) { no(); }
+  });
+  refresh();
+})();
+</script>
+
+</body></html>
